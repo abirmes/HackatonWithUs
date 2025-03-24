@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->id();
+            $table->integer('num_inscrits');
+            $table->float('taux_sumi');
+            $table->unsignedBigInteger('edition_id');
+            $table->foreign('edition_id')->references('id')->on('editions');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

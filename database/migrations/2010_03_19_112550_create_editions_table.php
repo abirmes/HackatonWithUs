@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
+            $table->string('theme');
+            $table->string('lien');
+            $table->string('date');
+            $table->string('regles');
             $table->timestamps();
+            $table->engine = 'InnoDB';
+
         });
     }
 

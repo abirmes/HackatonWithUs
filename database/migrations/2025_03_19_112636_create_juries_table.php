@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('juries', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('specialite');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

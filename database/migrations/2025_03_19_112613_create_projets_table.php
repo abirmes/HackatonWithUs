@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('projets', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+                $table->id();
+                $table->string('name');
+                $table->unsignedBigInteger('equipe_id');
+                $table->foreign('equipe_id')->references('id')->on('equipes');
+                $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

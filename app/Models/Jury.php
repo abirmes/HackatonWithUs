@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Jury extends Model
+class Jury extends User
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'specialite'
+    ];
 
     public function projet()
     {

@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('equipes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('edition_id');
+            $table->foreign('edition_id')->references('id')->on('editions');
             $table->timestamps();
+            $table->engine = 'InnoDB';
+
         });
     }
 

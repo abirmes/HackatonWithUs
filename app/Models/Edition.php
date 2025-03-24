@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Edition extends Model
 {
+    protected $fillable = [
+        'theme',
+        'lien',
+        'date',
+        'regles',
+    ];
     use HasFactory;
     public function equipe()
     {

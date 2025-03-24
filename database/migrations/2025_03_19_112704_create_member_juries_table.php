@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('member_juries', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->unsignedBigInteger('jury_id');
+            $table->foreign('jury_id')->references('id')->on('juries');
+            $table->rememberToken();
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Participant extends Model
+class Participant extends User
 {
     use HasFactory;
+    protected $fillable = [
+        'equipe_id',
+    ];
 
     public function equipe()
     {

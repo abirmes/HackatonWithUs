@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->string('content');
+            $table->unsignedBigInteger('participant_id');
+            $table->foreign('participant_id')->references('id')->on('participants');
             $table->timestamps();
+            $table->engine = 'InnoDB';
+
         });
     }
 

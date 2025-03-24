@@ -9,6 +9,11 @@ class Equipe extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'edition_id',
+    ];
+
     public function participant()
     {
         return $this->hasMany(Participant::class);
