@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EditionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTAuthController;
@@ -29,3 +30,15 @@ Route::middleware([JwtMiddleware::class])->group(function () {
     Route::get('user', [JWTAuthController::class, 'getUser']);
     Route::post('logout', [JWTAuthController::class, 'logout']);
 });
+
+Route::get('/edition', [EditionController::class, 'index']);
+Route::post('/edition/store' , [EditionController::class , 'store']);
+Route::get('/edition/show/{id}', [EditionController::class, 'show']);
+Route::get('/edition/edit/{id}' , [EditionController::class , 'edit']);
+Route::post('/edition/update' , [EditionController::class , 'update']);
+Route::post('/edition/destroy/{id}' , [EditionController::class , 'destroy']);
+
+
+
+
+

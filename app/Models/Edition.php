@@ -26,4 +26,8 @@ class Edition extends Model
     {
         return $this->hasOne(Statistic::class);
     }
+    public function theme()
+    {
+        return $this->hasMany(Theme::class);
+    }
 }
