@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Theme;
 use App\Http\Requests\StoreThemeRequest;
 use App\Http\Requests\UpdateThemeRequest;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ThemeController extends Controller
 {
@@ -13,7 +16,8 @@ class ThemeController extends Controller
      */
     public function index()
     {
-        //
+        $themes = DB::table('themes')->get();
+        return response()->json($themes);
     }
 
     /**
@@ -21,15 +25,29 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreThemeRequest $request)
+    public function store(Request $request)
     {
-        //
+        try {
+            DB::table('themes')->insert([
+                'name' => $request->name,
+                'description' => $request->description,
+                'categorie' => $request->categorie,
+                'techs-requises' => $request->techs_requises
+            ]);
+            return response()->json([
+                'message'=>'created successfully'
+            ]);
+        } catch (Exception $e) {
+            return response()->json(['message' => $e->getMessage()]);
+        }
+        
+
     }
 
     /**

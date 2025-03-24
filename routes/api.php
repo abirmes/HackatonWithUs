@@ -4,6 +4,7 @@ use App\Http\Controllers\EditionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTAuthController;
+use App\Http\Controllers\ThemeController;
 use App\Http\Middleware\JwtMiddleware;
 
 /*
@@ -37,6 +38,14 @@ Route::get('/edition/show/{id}', [EditionController::class, 'show']);
 Route::get('/edition/edit/{id}' , [EditionController::class , 'edit']);
 Route::post('/edition/update' , [EditionController::class , 'update']);
 Route::post('/edition/destroy/{id}' , [EditionController::class , 'destroy']);
+Route::post('/addThemeToEdition' , [EditionController::class , 'addThemeToEdition']);
+Route::post('/getEditionThemes' , [EditionController::class , 'getEditionThemes']);
+
+
+
+
+Route::get('/theme', [ThemeController::class, 'index']);
+Route::post('/theme/store', [ThemeController::class, 'store']);
 
 
 

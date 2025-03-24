@@ -8,17 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Edition extends Model
 {
     protected $fillable = [
-        'theme',
         'lien',
         'date',
         'regles',
     ];
     use HasFactory;
-    public function equipe()
+    public function equipes()
     {
         return $this->hasMany(Equipe::class);
     }
-    public function organisateur()
+    public function organisateurs()
     {
         return $this->hasMany(Organisateur::class);
     }
@@ -26,8 +25,8 @@ class Edition extends Model
     {
         return $this->hasOne(Statistic::class);
     }
-    public function theme()
+    public function themes()
     {
-        return $this->hasMany(Theme::class);
+        return $this->belongsToMany(Theme::class,"edition-theme");
     }
 }
