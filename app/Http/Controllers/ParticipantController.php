@@ -5,62 +5,36 @@ namespace App\Http\Controllers;
 use App\Models\Participant;
 use App\Http\Requests\StoreParticipantRequest;
 use App\Http\Requests\UpdateParticipantRequest;
+use App\Models\Equipe;
 
 class ParticipantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    
+    public function index() {}
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    
+    public function create() {}
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreParticipantRequest $request)
-    {
-        //
-    }
+    
+    public function store(StoreParticipantRequest $request) {}
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Participant $participant)
-    {
-        //
-    }
+    
+    public function show(Participant $participant) {}
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Participant $participant)
-    {
-        //
-    }
+    
+    public function edit(Participant $participant) {}
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateParticipantRequest $request, Participant $participant)
-    {
-        //
-    }
+    
+    public function update(UpdateParticipantRequest $request, Participant $participant) {}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Participant $participant)
+    
+    public function destroy(Participant $participant) {}
+
+
+    public function enterEquipe(Participant $participant ,int $equipe_id) 
     {
-        //
+        $equipe = Equipe::find($equipe_id);
+        $participant->equipe()->save($equipe); 
     }
+    
 }

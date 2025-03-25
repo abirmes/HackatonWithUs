@@ -11,7 +11,6 @@ class Equipe extends Model
 
     protected $fillable = [
         'name',
-        'edition_id',
     ];
 
     public function participant()

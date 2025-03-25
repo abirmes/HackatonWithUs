@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -31,14 +32,22 @@ class JWTAuthController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = $request->get('password');
+
+        $role = Role::where('name', 'user')->first();
+        $user->role()->associate($role);
+        // $role->user()->save($user);
+        // $user->role()->save($role);
+        $user->save();
+
+
+
         
 
-        $user = User::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-            'role_id'=> 1
-        ]);
+        
 
         $token = JWTAuth::fromUser($user);
 

@@ -11,26 +11,17 @@ use Illuminate\Support\Facades\DB;
 
 class ThemeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $themes = DB::table('themes')->get();
         return response()->json($themes);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        
-    }
+    
+    public function create(){}
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         try {
@@ -50,35 +41,15 @@ class ThemeController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Theme $theme)
-    {
-        //
-    }
+    
+    public function show(Theme $theme) {}
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Theme $theme)
-    {
-        //
-    }
+    
+    public function edit(Theme $theme) {}
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateThemeRequest $request, Theme $theme)
-    {
-        //
-    }
+    
+    public function update(UpdateThemeRequest $request, Theme $theme) {}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Theme $theme)
-    {
-        //
-    }
+    
+    public function destroy(Theme $theme) {}
 }

@@ -21,14 +21,11 @@ class EditionController extends Controller
     }
 
 
-    public function create()
-    {
-        
-    }
+    public function create() {}
 
     public function store(Request $request)
     {
-        
+
         try {
             DB::table('editions')->insert([
                 'lien' => $request->lien,
@@ -83,7 +80,6 @@ class EditionController extends Controller
     }
 
     
-    
 
     public function destroy($id)
     {
@@ -125,7 +121,6 @@ class EditionController extends Controller
     public function getEditionThemes(Request $request)
     {
         $edition = Edition::find($request->edition_id);
-        // return $edition;
         $themes = $edition->themes()->get();
         return $themes;
     }
