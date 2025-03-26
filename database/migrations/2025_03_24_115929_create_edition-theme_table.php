@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('edition_id');
             $table->timestamps();
             $table->foreign('edition_id')->references('id')->on('editions');
-            $table->foreign('theme_id')->references('id')->on('themes');
+        $table->foreign('theme_id')->references('id')->on('themes');
         });
     }
 

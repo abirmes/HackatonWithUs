@@ -39,8 +39,6 @@ class JWTAuthController extends Controller
 
         $role = Role::where('name', 'user')->first();
         $user->role()->associate($role);
-        // $role->user()->save($user);
-        // $user->role()->save($role);
         $user->save();
 
 

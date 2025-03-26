@@ -8,8 +8,7 @@ use App\Http\Requests\UpdateParticipantRequest;
 use App\Models\Equipe;
 
 class ParticipantController extends Controller
-{
-    
+{    
     public function index() {}
 
     
@@ -34,7 +33,10 @@ class ParticipantController extends Controller
     public function enterEquipe(Participant $participant ,int $equipe_id) 
     {
         $equipe = Equipe::find($equipe_id);
-        $participant->equipe()->save($equipe); 
+        $participant->equipe()->associate($equipe); 
     }
     
+
+    
+
 }

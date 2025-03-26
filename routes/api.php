@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\EditionController;
+use App\Http\Controllers\EquipeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTAuthController;
+use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Middleware\JwtMiddleware;
 
@@ -46,6 +48,18 @@ Route::post('/getEditionThemes' , [EditionController::class , 'getEditionThemes'
 
 Route::get('/theme', [ThemeController::class, 'index']);
 Route::post('/theme/store', [ThemeController::class, 'store']);
+
+
+
+
+Route::post('/equipe/store' , [EquipeController::class , 'store']);
+Route::get('/equipe' , [EquipeController::class , 'index'] );
+
+
+
+Route::post('/enterEquipe' , [ParticipantController::class] , ' enterEquipe');
+
+
 
 
 

@@ -19,4 +19,13 @@ class Participant extends User
         return $this->hasMany(Notification::class);
     }
 
+    public function mapper(Participant $participant , User $user)
+    {
+        $participant->id = $user->id;
+        $participant->name = $user->name;
+        $participant->email = $user->email;
+        $participant->password = $user->password;
+        $participant->role = $user->role;
+    }
+
 }

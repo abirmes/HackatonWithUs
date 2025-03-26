@@ -16,7 +16,7 @@ class EditionController extends Controller
 
     public function index()
     {
-        $editions = DB::table('editions')->get();
+        $editions = Edition::with('themes')->get();
         return response()->json($editions);
     }
 
