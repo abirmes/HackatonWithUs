@@ -25,7 +25,8 @@ class Participant extends User
         $participant->name = $user->name;
         $participant->email = $user->email;
         $participant->password = $user->password;
-        $participant->role = $user->role;
+        $role = Role::find($user->role->id);
+        $participant->role()->associate($role);
     }
 
 }

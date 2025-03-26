@@ -5,7 +5,9 @@ use App\Http\Controllers\EquipeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTAuthController;
+use App\Http\Controllers\OrganisateurController;
 use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Middleware\JwtMiddleware;
 
@@ -57,7 +59,15 @@ Route::get('/equipe' , [EquipeController::class , 'index'] );
 
 
 
-Route::post('/enterEquipe' , [ParticipantController::class] , ' enterEquipe');
+Route::post('/enterEquipe' , [ParticipantController::class , 'enterEquipe'] );
+
+
+Route::post('/user/role/change' , [OrganisateurController::class , 'changeUsersRoles']);
+Route::post('/equipe/status/change' , [OrganisateurController::class , 'validateTeams']);
+
+
+
+Route::post('/projet/store' , [ProjetController::class , 'store']);
 
 
 

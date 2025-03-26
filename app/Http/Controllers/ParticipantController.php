@@ -34,9 +34,7 @@ class ParticipantController extends Controller
     {
         $equipe = Equipe::find($equipe_id);
         $participant->equipe()->associate($equipe); 
+        $participant->save();
     }
-    
-
-    
 
 }

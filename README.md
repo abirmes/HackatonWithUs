@@ -31,3 +31,21 @@
 
 
 
+
+#### chnage user role 
+
+```http
+  POST /user/role/chnage
+```
+
+
+| Parameter | Type     | 
+| :-------- | :------- | 
+| `email`      | `string` | 
+| `newRoleName`      | `string` | 
+
+
+
+
+
+
