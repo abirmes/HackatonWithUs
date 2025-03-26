@@ -11,9 +11,9 @@
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `name` | `string` | **required|max:255**. |
-| `email` | `string` | **required|email|max:255**. |
-| `password` | `string` | **required|min:6**. |
+| `name` | `string` | **required, max:255**. |
+| `email` | `string` | **required, email, max:255**. |
+| `password` | `string` | **required, min:6**. |
 
 
 
