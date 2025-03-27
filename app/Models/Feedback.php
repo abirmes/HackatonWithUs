@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Projet extends Model
+class Feedback extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'name',
-        'equipe_id',
+        'note',
+        'comment'
     ];
-    public function equipe()
+    public function projet()
     {
         return $this->belongsTo(Projet::class);
     }
-    public function feedbacks()
+
+    public function juries()
     {
-        return $this->hasMany(Feedback::class);
+        return $this->belongsToMany(Jury::class);
     }
 }

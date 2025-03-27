@@ -37,13 +37,13 @@ Route::middleware([JwtMiddleware::class])->group(function () {
 });
 
 Route::get('/edition', [EditionController::class, 'index']);
-Route::post('/edition/store' , [EditionController::class , 'store']);
-Route::get('/edition/show/{id}', [EditionController::class, 'show']);
-Route::get('/edition/edit/{id}' , [EditionController::class , 'edit']);
-Route::post('/edition/update' , [EditionController::class , 'update']);
-Route::post('/edition/destroy/{id}' , [EditionController::class , 'destroy']);
-Route::post('/addThemeToEdition' , [EditionController::class , 'addThemeToEdition']);
-Route::post('/getEditionThemes' , [EditionController::class , 'getEditionThemes']);
+Route::post('/edition/store' , [EditionController::class , 'store'])->middleware([ 'is-organisateur']);
+Route::get('/edition/show/{id}', [EditionController::class, 'show'])->middleware([ 'is-organisateur']);
+Route::get('/edition/edit/{id}' , [EditionController::class , 'edit'])->middleware([ 'is-organisateur']);
+Route::post('/edition/update' , [EditionController::class , 'update'])->middleware([ 'is-organisateur']);
+Route::post('/edition/destroy/{id}' , [EditionController::class , 'destroy'])->middleware([ 'is-organisateur']);
+Route::post('/addThemeToEdition' , [EditionController::class , 'addThemeToEdition'])->middleware([ 'is-organisateur']);
+Route::post('/getEditionThemes' , [EditionController::class , 'getEditionThemes'])->middleware([ 'is-organisateur']);
 
 
 
@@ -54,20 +54,20 @@ Route::post('/theme/store', [ThemeController::class, 'store']);
 
 
 
-Route::post('/equipe/store' , [EquipeController::class , 'store']);
+Route::post('/equipe/store' , [EquipeController::class , 'store'])->middleware(['is-participant']);
 Route::get('/equipe' , [EquipeController::class , 'index'] );
 
 
 
-Route::post('/enterEquipe' , [ParticipantController::class , 'enterEquipe'] );
+Route::post('/enterEquipe' , [ParticipantController::class , 'enterEquipe'] )->middleware(['is-participant']);
 
 
-Route::post('/user/role/change' , [OrganisateurController::class , 'changeUsersRoles']);
-Route::post('/equipe/status/change' , [OrganisateurController::class , 'validateTeams']);
+Route::post('/user/role/change' , [OrganisateurController::class , 'changeUsersRoles'])->middleware([ 'is-organisateur']);
+Route::post('/equipe/status/change' , [OrganisateurController::class , 'validateTeams'])->middleware([ 'is-organisateur']);
 
 
 
-Route::post('/projet/store' , [ProjetController::class , 'store']);
+Route::post('/projet/store' , [ProjetController::class , 'store'])->middleware(['is-participant']);
 
 
 

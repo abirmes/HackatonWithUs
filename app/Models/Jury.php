@@ -14,9 +14,9 @@ class Jury extends User
         'specialite'
     ];
 
-    public function projet()
+    public function feedbacks()
     {
-        return $this->belongsToMany(Projet::class);
+        return $this->belongsToMany(Feedback::class);
     }
 
     public function memberJury()

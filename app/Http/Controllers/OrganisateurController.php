@@ -40,11 +40,6 @@ class OrganisateurController extends Controller
     {
         $email = $request->email;
         $newRoleName = $request->newRoleName;
-        if(JWTAuth::parseToken()->authenticate()->role->name != 'organisateur'){
-            return [
-                "message" => "not allowed"
-            ];
-        }
         if($newRoleName != 'admin' && $newRoleName != 'jury' && $newRoleName != 'participant' )
         {
             return [
@@ -63,11 +58,6 @@ class OrganisateurController extends Controller
 
     public function validateTeams(Request $request)
     {
-        if(JWTAuth::parseToken()->authenticate()->role->name != 'organisateur'){
-            return [
-                "message" => "not allowed"
-            ];
-        }
         $teamName = $request->teamName;
         $newStatus = $request->newStatus;
 
@@ -80,8 +70,6 @@ class OrganisateurController extends Controller
         $equipe = Equipe::where('name' , $teamName)->first();
         $equipe->status = $newStatus;
         $equipe->save();
-        return $equipe;
-
-
+        return $equipe; 
     }
 }
