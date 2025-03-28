@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feedback', function (Blueprint $table) {
-            $table->id();
-            $table->float('note');
-            $table->string('comment');
+        Schema::table('edition-theme', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->timestamps();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feedback');
+        Schema::table('edition-theme', function (Blueprint $table) {
+            $table->dropColumn('engine');
+        });
     }
 };

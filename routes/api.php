@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EditionController;
 use App\Http\Controllers\EquipeController;
+use App\Http\Controllers\FeedbackController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTAuthController;
@@ -68,6 +69,10 @@ Route::post('/equipe/status/change' , [OrganisateurController::class , 'validate
 
 
 Route::post('/projet/store' , [ProjetController::class , 'store'])->middleware(['is-participant']);
+
+
+
+Route::post('/feedback/store' , [FeedbackController::class , 'store'])->middleware('is-jury');
 
 
 

@@ -66,6 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'is-organisateur' => \App\Http\Middleware\checkOrganisateurRole::class,
         'is-participant' => \App\Http\Middleware\checkParticipantRole::class,
-
+        'is-jury'=>\App\Http\Middleware\checkJuryRole::class,
     ];
 }

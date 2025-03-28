@@ -6,6 +6,7 @@ use App\Models\Projet;
 use App\Http\Requests\StoreProjetRequest;
 use App\Http\Requests\UpdateProjetRequest;
 use App\Models\Participant;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
@@ -18,6 +19,8 @@ class ProjetController extends Controller
         $projects = DB::table('projects')->get();
         return $projects;
     }
+
+    
 
 
     public function create() {}
@@ -38,8 +41,9 @@ class ProjetController extends Controller
             return [
                 "message" => "project submitted successfully"
             ];
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (Exception $e) {
+            return response()->json(['error'=>$e->getMessage()]);
+            
         }
     }
 
